@@ -2,3 +2,5 @@
 index_files/
 .quarto/
 /.quarto/
+
+**/*.quarto_ipynb
