@@ -1,3 +1,26 @@
 ---
 title: Clasificador
 ---
+
+# 1. Import libraries
+```{python}
+from sklearn.datasets import load_breast_cancer
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, ConfusionMatrixDisplay
+```
+
+# 2. Cargar el data set
+```{python}
+data = load_breast_cancer()
+data
+X = data.data # features
+y = data.target # etiqueta
+```
+
+# 2. Split data
+
+```{python}
+train_test_split(
+    X,y,size=0.2,random_state=42,stratify=y)
+```
