@@ -13,14 +13,131 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 # 2. Cargar el data set
 ```{python}
 data = load_breast_cancer()
-data
+# data
 X = data.data # features
 y = data.target # etiqueta
 ```
 
+```{python}
+data
+```
 # 2. Split data
 
 ```{python}
-train_test_split(
-    X,y,size=0.2,random_state=42,stratify=y)
+X_train, X_test, y_train, y_test = train_test_split(
+    X,y,test_size=0.2,random_state=42,stratify=y
+)
+#print("X_TRAIN")
+#print(X_train)
+#print("_TEST")
+#print(X_test)
+#
+#print("Y_TRAIN")
+#print(y_train)
+#print("Y_TEST")
+#print(y_test)
 ```
+
+# 4. Entrenar modelos
+```{python}
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train, y_train) 
+```
+
+# 5. Predecir 
+
+```{python}
+y_pred = model.predict(X_test)
+```
+
+# 6. Evaluacion
+
+```{python}
+acc = accuracy_score(y_test, y_pred)
+acc
+prec = precision_score(y_test, y_pred)
+prec
+recall = recall_score(y_test, y_pred)
+recall
+f1 = f1_score(y_test, y_pred)
+f1
+
+print(f"accurancy: {acc}")
+print(f"precision: {prec}")
+print(f"recall: {recall}")
+print(f"f1: {f1}")
+```
+
+# 7. Matriz de comfusión
+```{python}
+ConfusionMatrixDisplay.from_predictions(y_test, y_pred)
+```
+
+
+
+# CLASIFICACION CON PIPE
+# 2. Cargar el data set
+```{python}
+data = load_breast_cancer()
+data
+```
+
+```{python}
+X = data.data # features
+y = data.target # etiqueta
+```
+```{python}
+data
+```
+# 3. Split data
+
+```{python}
+X_train, X_test, y_train, y_test = train_test_split(
+    X,y,test_size=0.2,random_state=42,stratify=y
+)
+#print("X_TRAIN")
+#print(X_train)
+#print("_TEST")
+#print(X_test)
+#
+#print("Y_TRAIN")
+#print(y_train)
+#print("Y_TEST")
+#print(y_test)
+```
+
+# 4. Entrenar modelos
+```{python}
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train, y_train) 
+```
+
+# 5. Predecir 
+
+```{python}
+y_pred = model.predict(X_test)
+```
+
+# 6. Evaluacion
+
+```{python}
+acc = accuracy_score(y_test, y_pred)
+acc
+prec = precision_score(y_test, y_pred)
+prec
+recall = recall_score(y_test, y_pred)
+recall
+f1 = f1_score(y_test, y_pred)
+f1
+
+print(f"accurancy: {acc}")
+print(f"precision: {prec}")
+print(f"recall: {recall}")
+print(f"f1: {f1}")
+```
+
+# 7. Matriz de comfusión
+```{python}
+ConfusionMatrixDisplay.from_predictions(y_test, y_pred)
+```
+
